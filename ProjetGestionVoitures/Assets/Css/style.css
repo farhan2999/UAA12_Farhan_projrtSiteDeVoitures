@@ -1,0 +1,31 @@
+#padding {
+    padding: 10px;
+}
+
+.imageIcon:hover {
+    transition: transform 2s;
+    transform: rotate(360deg);
+    transition-timing-function: linear;
+}
+
+.non3 {
+    background-color: rgb(131, 130, 184);
+    border: none;
+    border-radius: 0%;
+}
+
+img {
+    border-radius: 200px;
+    border: 13px ridge #ACAB5D;
+    text-align: center;
+}
+
+.p {
+    padding: 10px;
+}
+
+a,
+footer p:hover {
+    color: #33F585;
+    text-decoration: none;
+}
