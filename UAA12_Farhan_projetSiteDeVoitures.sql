@@ -28,14 +28,44 @@ FOREIGN KEY (utilID) REFERENCES Utilisateur (utilID),
 FOREIGN KEY (tyVoiID) REFERENCES Type_voiture (tyVoiID) 
 );
 
+insert into voiture( voitNom , voitPrix ,voitImage, voitLien_achat,utilID ,tyVoiID )
+values('Fiche technique BMW Série 3 Berline (G20) M340i mHEV 374ch xDrive A8 (2022)', '69 600 €','https://i0.wp.com/pdlv.fr/wp-content/uploads/2022/09/fiche-technique-bmw-serie-3-m340i-xdrive.jpg?resize=780%2C470&ssl=1','https://pdlv.fr/fiches-techniques/fiches-techniques-bmw/fiche-technique-bmw-serie-3-berline-g20-m340i-mhev-374ch-xdrive-a8-2022/','1','3');
+
+alter table  voiture
+DROP COLUMN voitNom;
+alter table  voiture
+ADD voitNom Varchar(1000);
+
+alter table  voiture
+DROP COLUMN voitLien_achat;
+alter table  voiture
+ADD voitLien_achat text(1000);
+
 DROP TABLE IF EXISTS Type_voiture;
 create table Type_voiture (
 tyVoiID int NOT NULL AUTO_INCREMENT,
-tyVoiFamiliale varChar(20),
-tyVoiSUV varChar(20),
-tyVoiSportive varChar(20),
+tyVoi varChar(20),
 primary key (tyVoiID)
 );
+
+alter table  Type_voiture
+DROP COLUMN tyVoiFamiliale;
+
+alter table  Type_voiture
+DROP COLUMN tyVoiSUV ;
+
+alter table  Type_voiture
+DROP COLUMN tyVoiSportive ;
+
+
+alter table  Type_voiture
+ADD tyVoi Varchar(40);
+
+insert into Type_voiture( tyVoi )
+values
+('Familiale'),
+('SUV'),
+('sportives');
 
 create table Type_motorisation (
 motorID int NOT NULL AUTO_INCREMENT,
