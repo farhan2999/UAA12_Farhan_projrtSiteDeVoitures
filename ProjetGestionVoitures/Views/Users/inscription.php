@@ -1,30 +1,31 @@
-<div class="flex space-evenly wrap">
-<form method="post" action="">
-    <fieldset>
-        <legend>Inscription</legend>
-        <div class="mb-3">
-            <label for="Nom" class="form-label">Nom</label>
-            <input type="text" placeholder="Nom" class="form-control" id="nom" name="nom" required>
-        </div>
-        <div class="mb-3">
-            <label for="Prenom" class="form-label">Prénom</label>
-            <input type="text" placeholder="Prénom" class="form-control" id="prenom" name="prenom" required>
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" placeholder="Email" class="form-control" id="email" name="email" required>
-        </div>
-        <div class="mb-3">
-            <label for="Login" class="form-label">Login</label>
-            <input type="text" placeholder="Login" class="form-control" id="login" name="login" required>
-        </div>
-        <div class="mb-3">
-            <label for="Password" class="form-label">Mot de passe</label>
-            <input type="password" placeholder="Mot de passe" class="form-control" id="mot_de_passe" name="mot_de_passe" required>
-        </div>
-        <div>
-            <button name="btnEnvoi" class="btn btn-primary">Envoyer</button>
-        </div>
-    </fieldset>
-</form>
+<div class="bodyIC">
+    <div class="container">
+        <h1>Inscription</h1>
+        <form action="" method="POST">
+            <div class="form-group">
+                <label for="firstname">Prénom</label>
+                <input type="text" id="firstname" name="firstname" placeholder="Votre prénom" required>
+            </div>
+            <div class="form-group">
+                <label for="lastname">Nom</label>
+                <input type="text" id="lastname" name="lastname" placeholder="Votre nom" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-email">Email</label>
+                <input type="email" id="signup-email" name="email" placeholder="Votre email" required>
+            </div>
+            <div class="form-group">
+                <label for="signup-password">Mot de passe</label>
+                <input type="password" id="signup-password" name="password" placeholder="Votre mot de passe" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirmez le mot de passe</label>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirmez votre mot de passe" required>
+            </div>
+            <button type="submit" class="btn" value="btn">S'inscrire</button>
+            <div class="link">
+                <a href="connexion.php">Déjà un compte ? Connectez-vous</a>
+            </div>
+        </form>
+    </div>
 </div>

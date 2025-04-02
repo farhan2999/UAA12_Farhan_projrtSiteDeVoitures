@@ -1,23 +1,19 @@
-<div class="flex space-evenly wrap">
-    <form method="post" action="">
-        <fieldset>
-            <legend>Se connecter</legend>
-            <div class="mb-3">
-                <label for="Login" class="form-label">Login</label>
-                <input type="text" placeholder="Login" class="form-control" id="login" aria-describedby="emailHelp" name="login" required>
+<div class="bodyIC">
+    <div class="container">
+        <h1>Connexion</h1>
+        <form action="index.php" method="POST">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Votre email" required>
             </div>
-            <div class="mb-3">
-                <label for="Password" class="form-label">Mot de passe</label>
-                <input type="password" placeholder="Mot de passe" class="form-control" id="mot_de_passe" name="mot_de_passe" required>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" placeholder="Votre mot de passe" required>
             </div>
-            <div>
-                <button name="btnEnvoi" class="btn btn-primary">Envoi</button>
+            <button type="submit" class="btn">Se connecter</button>
+            <div class="link">
+                <a href="inscription.php">Pas encore inscrit ? Créez un compte</a>
             </div>
-        </fieldset>
-        <div>
-            <h4 class="text-danger">Pas encore inscrit ?</h4>
-            <a href="inscriptionOrEditProfil.php" class="btn btn-secondary">Cliquez ici !</a>
-        </div>
-    </form>
-
+        </form>
+    </div>
 </div>

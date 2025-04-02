@@ -1,22 +1,20 @@
+<div class="bodyA">
+    <h1>Les Voitures</h1>
 
-<h1>Les mods créer par la communauté</h1>
-
-<div class="flexible flex-wrap justify-content-space-around">
-    <?php foreach ($tyVoiFamiliale as $type_voiture) : ?>
-        <div class="border card">
-            <h2 class="center"><?= $tyVoiFamiliale->type_voiture ?></h2>
-            <div>
+    <div class="flexible flex-wrap justify-content-space-around">
+        <?php foreach ($car as $carV) : ?>
+            <div class="border card">
+                <h2 class="center"><?= $carV->voitNom  ?></h2>
                 <div>
-                    <img src="<?= $oi->yuy ?>" alt="photo de l'école">
-                </div>
-                <div class="center">
-                    <p><span>Date de parution<?=$yo->yo ?> - </span> <span><?=$op->op ?></span></p>
-                    <a href="voirEcole.php" class="btn btn-page">Voir l'école</a>
+                    <div>
+                        <img src="<?= $carV->voitImage   ?>" alt="photo de l'école">
+                    </div>
+                    <div class="center">
+                        <p><span>Prix <?= $carV->voitPrix  ?> - </span> <span><a href="<?= $carV->voitLien_achat  ?>" target="_blank" rel="noopener noreferrer">Lien achat</a> </span></p>
+                    </div>
                 </div>
             </div>
-        </div>
-    <?php endforeach  ?>
+        <?php endforeach  ?>
+    </div>
+
 </div>
-
-
-/* pas fini

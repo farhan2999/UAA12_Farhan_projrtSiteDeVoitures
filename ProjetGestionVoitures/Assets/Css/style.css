@@ -2,30 +2,151 @@
     padding: 10px;
 }
 
-.imageIcon:hover {
-    transition: transform 2s;
+.imgFoo:hover {
+    transition: transform 2.5s;
     transform: rotate(360deg);
     transition-timing-function: linear;
 }
 
+h1 {
+    color: white;
+}
+
+h2 {
+    color: white;
+}
+
+
 .non3 {
-    background-color: rgb(131, 130, 184);
+    
     border: none;
     border-radius: 0%;
 }
 
+a {
+    color: #3a4e4e;
+    text-decoration: none;
+}
+
+p {
+    color: rgb(94, 0, 131);
+}
+
+.imgFoo {
+    border-radius: 200px;
+    width: 50px;
+    text-align: center;
+}
 img {
     border-radius: 200px;
-    border: 13px ridge #ACAB5D;
+    width: 200px;
+    border: 1px ridge #ACAB5D;
     text-align: center;
 }
 
 .p {
-    padding: 10px;
+    padding: 12px;
 }
 
-a,
+footer {
+    background-color: rgb(131, 130, 184);
+
+}
+
 footer p:hover {
     color: #33F585;
     text-decoration: none;
+}
+
+
+ul li   {
+    list-style-type: none;
+
+}
+
+header {
+    background-color: rgb(131, 130, 184);
+    padding: 12px;
+}
+
+.bodyA{
+    background-image: url(https://static.vecteezy.com/ti/photos-gratuite/t2/37247993-ai-genere-la-vitesse-courses-publicite-contexte-avec-copie-espace-gratuit-photo.jpg);
+    background-size: cover;
+}
+
+.bodyIC {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, rgb(189, 82, 189), #74ebd5, #9face6 , rgb(204, 61, 61) );
+    margin: 0;
+    height: 100vh;
+}
+
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem 0.8rem 0.8rem 0.2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    border-color: #74ebd5;
+    outline: none;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.8rem;
+    background: #74ebd5;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #67d6cb;
+}
+
+.link {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.link a {
+    color: #74ebd5;
+    text-decoration: none;
+}
+
+.link a:hover {
+    text-decoration: underline;
 }
