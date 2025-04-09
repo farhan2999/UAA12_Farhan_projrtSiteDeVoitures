@@ -34,11 +34,25 @@ if ($uri === "/connexion") {
         }
     }
     $title = "Inscription";
-    var_dump("ggffg");
     $template = "Views/Users/inscription.php";
     require_once("Views/base.php");
 }
 
+elseif ($uri === "/updateProfil") {
+    if (isset($_POST['btn'])) {
+        $messageError = verifEmptyData();
+        if (!$messageError) {
+            //ajout de l'utilisateur à la base de données
+            updateUser($pdo);
+            updateSession($pdo);
+            // redirection vers la page de connexion
+            header('location:/inscription');
+        }
+    }
+    $title = "Inscription";
+    $template = "Views/Users/inscription.php";
+    require_once("Views/base.php");
+}
 function verifEmptyData(){
     foreach($_POST as $key => $value){
         if(empty(str_replace('','', $value))){

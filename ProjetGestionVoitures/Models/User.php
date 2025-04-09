@@ -9,11 +9,11 @@ function createUser($pdo)
         $ajouteUser = $pdo->prepare($query);
         //exécution en attribuant les valeurs récupérées dans le formulaire aux paramétres
         $ajouteUser->execute([
-            'utilNom' => $_POST["lastname"],
-            'utilPrenom' => $_POST["firstname"],
+            'utilNom' => $_POST["firstname"],
+            'utilPrenom' => $_POST["lastname"],
             'utilEmail' => $_POST["email"],
             'utilMot_de_passe' => $_POST["password"],
-            'utilPhoto_profil' => "",
+            'utilPhoto_profil' => ['utilPhoto_profil'],
             'utilRole' => 'user'
             ]);   
  
@@ -26,6 +26,7 @@ function createUser($pdo)
 function connectUser($pdo)
 {
     try {
+        var_dump($_POST);
         //définition de la requête select en utilisant la notion paramèter
         $query = 'select * from utilisateur where utilEmail = :utilEmail and utilMot_de_passe = :utilMot_de_passe';
         //préparation de la requête 
@@ -51,3 +52,38 @@ function connectUser($pdo)
     }
 }
 
+function updateUser($pdo)
+{
+    try {
+        $query = 'update utilisateur set utilNom = :utilNom, utilPrenom = :utilPrenom, utilEmail = :utilEmail, utilMot_de_passe = :utilMot_de_passe, utilPhoto_profil = :utilPhoto_profil where utilID = :utilID';
+        $ajouteUser = $pdo->prepare($query);
+        $ajouteUser->execute([
+            'utilNom' => $_POST['firstname'],
+            'utilPrenom'=> $_POST['lastname'],
+            'utilEmail' => $_POST['mot de passe'],
+            'utilMot_de_passe' => $_POST['email'],
+            'utilPhoto_profil' => ['utilPhoto_profil'],
+            'utilID' => $_SESSION['user']->utilID
+        ]);
+    } catch (PDOEXCEPTION $e) {
+        $message = $e->getMessage();
+        die($message);
+    }
+
+}
+
+function updateSession($pdo)
+{
+    try {
+        $query = 'select * from utilisateur where utilID = :utilID';
+        $selectUser = $pdo->prepare($query);
+        $selectUser->execute([
+            'utilID' => $_SESSION['user']->utilID
+        ]);
+        $user = $selectUser->fetch();
+        $_SESSION['user'] = $user;
+    } catch (PDOException $e) {
+        $message = $e->getMessage();
+        die($message);
+    }
+}
