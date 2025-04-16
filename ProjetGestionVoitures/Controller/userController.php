@@ -49,6 +49,12 @@ elseif ($uri === "/updateProfil") {
             header('location:/');
         }
     }
+    elseif (isset($_POST['deleteProfil'])) {
+        //deleteOptionsCarFromUser($pdo);
+        deleteAllFromUser($pdo);
+        deleteUser($pdo);
+        header("location:/deconnexion");
+    }
     $title = "Inscription";
     $template = "Views/Users/inscription.php";
     require_once("Views/base.php");

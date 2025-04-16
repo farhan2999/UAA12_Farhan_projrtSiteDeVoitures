@@ -25,8 +25,9 @@
 
             </div>
             <button type="submit" class="btn" name="btn" id="btn" value="btn"><?php if (isset($_SESSION['user'])) : ?>Modifier <?php else : ?>S'inscrire <?php endif ?></button>
+            <button type="submit" class="btn" name="deleteProfil" id="deleteProfil" value="deleteProfil"><?php if (isset($_SESSION['user'])) : ?>Supprimer <?php else : ?> <?php endif ?></button>
             <div class="link">
-                <a href="connexion">Déjà un compte ? Connectez-vous</a>
+                <a href="connexion"><?php if (isset($_SESSION['user'])) : ?>  <?php else : ?>Déjà un compte ? Connectez-vous <?php endif ?></a>
             </div>
         </form>
     </div>

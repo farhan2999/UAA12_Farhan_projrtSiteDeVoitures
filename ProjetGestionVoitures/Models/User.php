@@ -87,3 +87,19 @@ function updateSession($pdo)
         die($message);
     }
 }
+
+function deleteUser($pdo)
+{
+    try {
+        $query = 'delete from utilisateur where utilID = :utilID';
+        $selectUser = $pdo->prepare($query);
+        $selectUser->execute([
+            'utilID' => $_SESSION['user']->utilID
+        ]);
+        $user = $selectUser->fetch();
+        $_SESSION['user'] = $user;
+    } catch (PDOException $e) {
+        $message = $e->getMessage();
+        die($message);
+    }
+}
