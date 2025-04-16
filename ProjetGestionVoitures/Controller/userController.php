@@ -46,7 +46,7 @@ elseif ($uri === "/updateProfil") {
             updateUser($pdo);
             updateSession($pdo);
             // redirection vers la page de connexion
-            header('location:/inscription');
+            header('location:/');
         }
     }
     $title = "Inscription";

@@ -9,8 +9,8 @@ function createUser($pdo)
         $ajouteUser = $pdo->prepare($query);
         //exécution en attribuant les valeurs récupérées dans le formulaire aux paramétres
         $ajouteUser->execute([
-            'utilNom' => $_POST["firstname"],
-            'utilPrenom' => $_POST["lastname"],
+            'utilNom' => $_POST["lastname"],
+            'utilPrenom' => $_POST["firstname"],
             'utilEmail' => $_POST["email"],
             'utilMot_de_passe' => $_POST["password"],
             'utilPhoto_profil' => ['utilPhoto_profil'],
@@ -58,10 +58,10 @@ function updateUser($pdo)
         $query = 'update utilisateur set utilNom = :utilNom, utilPrenom = :utilPrenom, utilEmail = :utilEmail, utilMot_de_passe = :utilMot_de_passe, utilPhoto_profil = :utilPhoto_profil where utilID = :utilID';
         $ajouteUser = $pdo->prepare($query);
         $ajouteUser->execute([
-            'utilNom' => $_POST['firstname'],
-            'utilPrenom'=> $_POST['lastname'],
-            'utilEmail' => $_POST['mot de passe'],
-            'utilMot_de_passe' => $_POST['email'],
+            'utilNom' => $_POST['lastname'],
+            'utilPrenom'=> $_POST['firstname'],
+            'utilEmail' => $_POST['email'],
+            'utilMot_de_passe' => $_POST['password'],
             'utilPhoto_profil' => ['utilPhoto_profil'],
             'utilID' => $_SESSION['user']->utilID
         ]);
