@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS Voiture;
 create table Voiture (
 voitID int NOT NULL AUTO_INCREMENT,
 voitNom varChar(20),
-voitPrix varChar(20),
+voitPrix voitPrix float,
 voitImage text(50),
 voitLien_achat varChar(20),
 utilID int ,
