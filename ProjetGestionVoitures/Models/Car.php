@@ -90,7 +90,7 @@ IN: $pdo containing all the connection information
 
 */
 
-function createSchool($pdo)
+function createCars($pdo)
 {
     try {
         $query = 'insert into voiture (voitNom, voitPrix, tyVoiID, voitImage, voitLien_achat, utilID)
@@ -110,4 +110,54 @@ function createSchool($pdo)
         die($message);
 
     }
+}
+
+function ajouterOptionCars ($pdo,$tyVoiID,$tyVoi){
+    try {
+        $query = 'insert into type_voiture( tyVoiID , tyVoi ) values(:tyVoiID , tyVoi)';
+        $deleteAllFromUser = $pdo->prepare($query);
+        $deleteAllFromUser->execute([
+            'tyVoiID' => $tyVoiID,
+            'tyVoi' => $tyVoi
+        ]);
+    }
+        catch (PDOException $e) {
+        $message = $e->getMessage();
+        die($message);
+    }
+}
+
+
+    function selectOneCar($pdo)
+    {
+        try {
+            $query = 'select * from voiture where utilID = :utilID';
+            $selectCar = $pdo->prepare($query);
+            $selectCar->execute([
+                'utilID' => $_GET["utilID"]
+            ]);
+            $car = $selectCar->fetch(); 
+            return $car;
+        } catch (PDOException $e) {
+            $message = $e->getMessage();
+            die($message);
+        }
+    }
+
+    function selectOptionsActiveCars($pdo)
+    {
+    try {
+        $query = 'select * from type_voiture where tyVoiID in (select tyVoiID from voiture where tyVoiID =:tyVoiID);';
+        $selectOptions = $pdo->prepare($query);
+        $selectOptions->execute([
+            'tyVoiID' => $_GET["tyVoiID"]
+        ]);
+        $options = $selectOptions->fetchAll();
+        return $options;
+        
+    } catch (PDOException $e) {
+        $message = $e->getMessage();
+        die($message);
+    }
+    
 }

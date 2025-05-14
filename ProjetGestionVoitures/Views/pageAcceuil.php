@@ -3,7 +3,7 @@
 <?php else :?>
 <h1>Liste des voitures répertoriées</h1>
 <?php endif ?>
-<?php if (isset($_SESSION["utilisateur"])): ?>
+<?php if (isset($_SESSION["user"])): ?>
     <a href="createCar">Ajouter une voiture</a>
 <?php endif ?>
 <div class="bodyA">

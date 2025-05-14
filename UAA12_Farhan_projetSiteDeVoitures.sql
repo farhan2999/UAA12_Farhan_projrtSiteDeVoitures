@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS Voiture;
 create table Voiture (
 voitID int NOT NULL AUTO_INCREMENT,
 voitNom varChar(20),
-voitPrix voitPrix float,
+voitPrix  float,
 voitImage text(50),
 voitLien_achat varChar(20),
 utilID int ,
@@ -27,6 +27,11 @@ primary key (voitID),
 FOREIGN KEY (utilID) REFERENCES Utilisateur (utilID),
 FOREIGN KEY (tyVoiID) REFERENCES Type_voiture (tyVoiID) 
 );
+
+alter table  voiture
+DROP COLUMN voitPrix;
+alter table  voiture
+ADD voitPrix text(100);
 
 insert into voiture( voitNom , voitPrix ,voitImage, voitLien_achat,utilID ,tyVoiID )
 values('Fiche technique BMW Série 3 Berline (G20) M340i mHEV 374ch xDrive A8 (2022)', '69 600 €','https://i0.wp.com/pdlv.fr/wp-content/uploads/2022/09/fiche-technique-bmw-serie-3-m340i-xdrive.jpg?resize=780%2C470&ssl=1','https://pdlv.fr/fiches-techniques/fiches-techniques-bmw/fiche-technique-bmw-serie-3-berline-g20-m340i-mhev-374ch-xdrive-a8-2022/','1','3');
@@ -67,14 +72,22 @@ values
 ('SUV'),
 ('sportives');
 
+
+
 create table Type_motorisation (
 motorID int NOT NULL AUTO_INCREMENT,
-motorEssence varChar(20),
-motorDiesel varChar(20),
-motorHybride varChar(20),
-motorElectrique varChar(20),
+tyMotor varChar(20),
 primary key (motorID)
 );
+
+insert into Type_motorisation( tyMotor )
+values
+('motorEssence'),
+('motorDiesel'),
+('motorHybride'),
+('motorElectrique');
+
+
 
 DROP TABLE IF EXISTS Favoris;
 create table Favoris (
@@ -89,3 +102,22 @@ primary key (favID )
 
 insert into Utilisateur( utilNom , utilPrenom , utilEmail , utilMot_de_passe , utilPhoto_profil , utilRole)
 values('Abuzour', 'Farhan','200550@site.asty-moulin.be','as123254','https://media.istockphoto.com/id/1495088043/fr/vectoriel/ic%C3%B4ne-de-profil-utilisateur-avatar-ou-ic%C3%B4ne-de-personne-photo-de-profil-symbole-portrait.jpg?s=612x612&w=0&k=20&c=moNRZjYtVpH-I0mAe-ZfjVkuwgCOqH-BRXFLhQkZoP8=','admin');
+
+
+CREATE TABLE `farahan`.`voiture_motorisation` (
+  `voiMatoID` INT NOT NULL,
+  `motorID` INT NULL,
+  `voitID` INT NULL,
+  PRIMARY KEY (`voiMatoID`),
+  INDEX `voitID_idx` (`voitID` ASC) VISIBLE,
+  INDEX `motorID_idx` (`motorID` ASC) VISIBLE,
+  CONSTRAINT `voitID`
+    FOREIGN KEY (`voitID`)
+    REFERENCES `farahan`.`type_voiture` (`tyVoiID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `motorID`
+    FOREIGN KEY (`motorID`)
+    REFERENCES `farahan`.`type_motorisation` (`motorID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
