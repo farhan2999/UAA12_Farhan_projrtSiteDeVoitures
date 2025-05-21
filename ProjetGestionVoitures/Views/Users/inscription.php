@@ -1,6 +1,6 @@
 <div class="bodyIC">
     <div class="container">
-        <h1>Inscription</h1>
+        <h1> <?php if (isset($_SESSION['user'])) : ?>Profil <?php else : ?>Inscription <?php endif ?></h1>
         <form action="" method="POST">
             <div class="form-group">
                 <label for="lastname">Nom</label>

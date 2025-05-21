@@ -1,3 +1,4 @@
+<?php $uri = $_SERVER["REQUEST_URI"]; ?>
 <?php if ($uri === "/MyCars") : ?>
     <h1>vos voitures</h1>
 <?php else :?>
@@ -15,7 +16,7 @@
                 <h2 class="center"><?= $carV->voitNom  ?></h2>
                 <div>
                     <div>
-                        <img src="<?= $carV->voitImage   ?>" alt="photo de voituer">
+                        <img src="<?= $carV->voitImage ?>" alt="photo de voituer">
                     </div>
                     <div class="center">
                         <p><span>Prix <?= $carV->voitPrix  ?> - </span> <span><a href="<?= $carV->voitLien_achat  ?>" target="_blank" rel="noopener noreferrer">Lien achat</a> </span></p>
