@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label for="utilPhoto_profil">Photo profil</label>
-                <input type="utilPhoto_profil" id="utilPhoto_profil" name="utilPhoto_profil" placeholder="Votre Photo profil" <?php if (isset($_SESSION['user'])) : ?>value="<?= $_SESSION['user']->utilPhoto_profil ?>" <?php endif ?>>
+                <input type="text" type="utilPhoto_profil" id="utilPhoto_profil" name="utilPhoto_profil" placeholder="Votre Photo profil" <?php if (isset($_SESSION['user'])) : ?>value="<?= $_SESSION['user']->utilPhoto_profil ?>" <?php endif ?>>
 
             </div>
             <?php if (isset($_SESSION["user"])) : ?>

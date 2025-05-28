@@ -31,14 +31,14 @@ function deleteAllFromUser($pdo)
 
 function selectMyCars($pdo){
     try {
-        $query = 'select * from voiture where voitID = : voitID';
+        $query = 'SELECT * FROM voiture WHERE utilID = :utilID';
 
         $selectCar = $pdo->prepare($query);
 
         $selectCar->execute([
 
 
-        'userId' => $_SESSION["user"]->id
+        'utilID' => $_SESSION["user"]->utilID
 
         ]);
         $car = $selectCar->fetchAll();
@@ -64,17 +64,31 @@ try {
 }
 }
 
+function selectAllMotor ($pdo){
+    try {
+        $query = 'SELECT * FROM type_motorisation';
+        $selectOptions = $pdo->prepare($query);
+        $selectOptions->execute();
+        $options = $selectOptions->fetchAll();
+        return $options;
+        }
+        catch (PDOException $e) {
+        $message = $e->getMessage();
+        die($message);
+    }
+    }
 
-function createCars($pdo)
+
+function createCar($pdo)
 {
     try {
         $query = 'insert into voiture (voitNom, voitPrix, tyVoiID, voitImage, voitLien_achat, utilID)
         values ​​(:voitNom, :voitPrix, :tyVoiID, :voitImage, :voitLien_achat,  :utilID)';
         $addCar = $pdo->prepare($query);
         $addCar->execute([
-            'voitNom' => $_POST["name car"],
-            'voitPrix' => $_POST["le prix"],
-            'tyVoiID' => $_POST["type de voiture"],
+            'voitNom' => $_POST["name_car"],
+            'voitPrix' => $_POST["le_prix"],
+            'tyVoiID' => $_POST["type_voiture"],
             'voitImage' => $_POST["image"],
             'voitLien_achat' => $_POST["Lien_Achat"],
             'utilID' => $_SESSION["user"]->utilID
@@ -109,7 +123,7 @@ function ajouterOptionCars ($pdo,$tyVoiID,$tyVoi){
             $query = 'select * from voiture where utilID = :utilID';
             $selectCar = $pdo->prepare($query);
             $selectCar->execute([
-                'utilID' => $_GET["utilID"]
+                'voitID' => $_GET["voitID"]
             ]);
             $car = $selectCar->fetch(); 
             return $car;
@@ -144,9 +158,9 @@ function updateCar($pdo)
                  voitImage = :voitImage, voitLien_achat = :voitLien_achat WHERE voitID = :voitID';
         $updateSchoolFromId = $pdo->prepare($query);
         $updateSchoolFromId->execute([
-            'voitNom' => $_POST['name car'],
-            'voitPrix' => $_POST["le prix"],
-            'tyVoiID' => $_POST["type de voiture"],
+            'voitNom' => $_POST['name_car'],
+            'voitPrix' => $_POST["le_prix"],
+            'tyVoiID' => $_POST["type_voiture"],
             'voitImage' => $_POST["image"],
             'voitLien_achat' => $_POST["Lien_Achat"],
             'utilID' => $_GET["utilID"] 
@@ -185,3 +199,6 @@ function deleteOneCar($pdo)
         die($message);
     }
 }
+
+
+

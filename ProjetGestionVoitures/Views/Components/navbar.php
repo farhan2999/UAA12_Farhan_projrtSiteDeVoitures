@@ -3,7 +3,7 @@
         <?php if (isset($_SESSION["user"])) : ?>
             <li><a href="/">Acceuil</a></li>
             <li><a href="updateProfil">Profil</a></li>
-            <li><a href="MyCars">vos voitures</a></li>
+            <li><a href="myCars">vos voitures</a></li>
             <li><a href="deconnexion">Déconnexion</a></li>
         <?php else : ?>
             <li><a href="/">Acceuil</a></li>

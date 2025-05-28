@@ -3,8 +3,8 @@
         <h1>Inscription</h1>
         <form action="" method="POST">
             <div class="form-group">
-                <label for="name car">Nom de voiture</label>
-                <input type="text" id="name car" name="name car" placeholder="nom de voiture" <?php if (isset($_SESSION['user'])) : ?>value="<?= $_SESSION['user']->voitNom ?>" <?php endif ?> required>
+                <label for="name_car">Nom de voiture</label>
+                <input type="text" id="name_car" name="name_car" placeholder="nom de voiture" <?php if (isset($_SESSION['user'])) : ?>value="<?= $_SESSION['user']->voitNom ?>" <?php endif ?> required>
             </div>
             <div class="form-group">
                 <label for="firstname">Prénom</label>
@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label for="utilPhoto_profil">Photo profil</label>
-                <input type="utilPhoto_profil" id="utilPhoto_profil" name="utilPhoto_profil" placeholder="Votre Photo profil" <?php if (isset($_SESSION['user'])) : ?>value="<?= $_SESSION['user']->utilPhoto_profil ?>" <?php endif ?>>
+                <input type="text" type="utilPhoto_profil" id="utilPhoto_profil" name="utilPhoto_profil" placeholder="Votre Photo profil" <?php if (isset($_SESSION['user'])) : ?>value="<?= $_SESSION['user']->utilPhoto_profil ?>" <?php endif ?>>
 
             </div>
             <?php if (isset($_SESSION["user"])) : ?>

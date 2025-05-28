@@ -5,23 +5,23 @@ require_once "Models/Car.php";
 $uri = $_SERVER['REQUEST_URI'];
 
 if ($uri === "/myCars") {
-    $car = selectAllCars($pdo);
+    $car = selectMyCars($pdo);
     $title = "Mes voitures";
-    $template = "Views/pageAccueil.php";
+    $template = "Views/pageAcceuil.php";
     require_once("Views/base.php");
 } elseif ($uri === "/createCar") {
 
     if (isset($_POST['btn'])) {
-        createCars($pdo);
-
+        createCar($pdo);
         $carId = $pdo->lastInsertId();
         for ($i = 0; $i < count($_POST["options"]); $i++) {
             $optionScolaireId = $_POST["options"][$i];
             ajouterOptionCars($pdo, $tyVoiID, $tyVoi);
         }
-        header("locations:/MyCars");
+        header("locations:/myCars");
     }
-    $options = selectAllOptions($pdo);
+    $tyVois = selectAllOptions($pdo);
+    $tymotors = selectAllMotor($pdo);
     $title = "Ajout d'une voiture";
     $template = "Views/Cars/editOrCreateCar.php";
     require_once("Views/base.php");
@@ -29,9 +29,10 @@ if ($uri === "/myCars") {
     $car = $pdo->selectOneCar($pdo);
     $options = selectAllOptions($pdo);
     $title = "Ajout d'une voiture";
-    $template = "Views/Cars/voitCar.php";
+    $template = "voitCar.php";
     require_once("Views/base.php");
-} elseif (isset($_GET["carlId"]) && $uri == "/updateCar?carlId=" . $_GET["carId"]) {
+} elseif (isset($_GET["carId"]) && $uri == "/updateCar?carId=" . $_GET["carId"])
+ {
 
     if (isset($_POST['btn'])) {
         updateCar($pdo);
@@ -40,7 +41,7 @@ if ($uri === "/myCars") {
             $optionCarId = $_POST['options'][$i];
             ajouterOptionCars($pdo, $_GET["carlId"], $optionCarId);
         }
-        header("location:/MyCar");
+        header("location:/myCars");
     }
     // rechercher les données de l'école concernée ainsi que les options correspondantes
     $car = selectOneCar($pdo);
@@ -55,5 +56,5 @@ if ($uri === "/myCars") {
 elseif (isset($_GET["tyVoiID"]) && $uri === "/deleteCar?tyVoiID=" . $_GET["tyVoiID"]) {
         deleteOptionsCar($pdo);  
         $deleted = deleteOneCar($pdo);
-            header("Location: /mesEcoles");
+            header("location:/myCars");
 }
