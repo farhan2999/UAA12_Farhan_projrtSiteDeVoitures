@@ -12,18 +12,18 @@
             </div>
             <div class="form-group">
                 <label for="voitLien_achat">Lien Achat</label>
-                <input type="voitLien_achat" id="voitLien_achat" name="Lien_Achat" placeholder="Lien Achat" <?php if (isset($car)) : ?> <?php endif ?> required>
+                <input type="text" id="voitLien_achat" name="Lien_Achat" placeholder="Lien Achat" <?php if (isset($car)) : ?> <?php endif ?> required>
             </div>
             <div class="form-group">
                 <label for="voitImage">Photo voiture</label>
-                <input type="voitImage" id="voitImage" name="image" placeholder="Photo voiture" <?php if (isset($car)) : ?> <?php endif ?>>
+                <input type="text" id="voitImage" name="image" placeholder="Photo voiture" <?php if (isset($car)) : ?> <?php endif ?>>
             </div>
-            <select name="type" id="type-select" >
+            <select name="type_voiture" id="type-select" >
                 <?php foreach ($tyVois as $tyVoi) : ?>
                     <option value="<?= $tyVoi->tyVoiID ?>" ><?= $tyVoi->tyVoi ?></option>
                 <?php endforeach ?>
             </select>
-            <select name="type" id="type-select" >
+            <select name="type_moto" id="type-select" >
                 <?php foreach ($tymotors as $tymotor) : ?>
                     <option value="<?= $tymotor->motorID ?>" ><?= $tymotor->tyMotor ?></option>
                 <?php endforeach ?>

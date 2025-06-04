@@ -32,11 +32,12 @@ alter table  voiture
 DROP COLUMN voitPrix;
 alter table  voiture
 ADD voitPrix text(100);
-
-insert into voiture( voitNom , voitPrix ,voitImage, voitLien_achat,utilID ,tyVoiID )
-values('Fiche technique BMW Série 3 Berline (G20) M340i mHEV 374ch xDrive A8 (2022)', '69 600 €','https://i0.wp.com/pdlv.fr/wp-content/uploads/2022/09/fiche-technique-bmw-serie-3-m340i-xdrive.jpg?resize=780%2C470&ssl=1','https://pdlv.fr/fiches-techniques/fiches-techniques-bmw/fiche-technique-bmw-serie-3-berline-g20-m340i-mhev-374ch-xdrive-a8-2022/','1','3');
-
 alter table  voiture
+ADD motorID int;
+
+
+insert into voiture( voitNom , voitPrix ,voitImage, voitLien_achat,utilID ,tyVoiID,motorID )
+values('Fiche technique BMW Série 3 Berline (G20) M340i mHEV 374ch xDrive A8 (2022)', '69 600 €','https://i0.wp.com/pdlv.fr/wp-content/uploads/2022/09/fiche-technique-bmw-serie-3-m340i-xdrive.jpg?resize=780%2C470&ssl=1','https://pdlv.fr/fiches-techniques/fiches-techniques-bmw/fiche-technique-bmw-serie-3-berline-g20-m340i-mhev-374ch-xdrive-a8-2022/','1','3',2);alter table  voiture
 DROP COLUMN voitNom;
 alter table  voiture
 ADD voitNom Varchar(1000);

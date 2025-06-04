@@ -82,16 +82,17 @@ function selectAllMotor ($pdo){
 function createCar($pdo)
 {
     try {
-        $query = 'insert into voiture (voitNom, voitPrix, tyVoiID, voitImage, voitLien_achat, utilID)
-        values ​​(:voitNom, :voitPrix, :tyVoiID, :voitImage, :voitLien_achat,  :utilID)';
+        $query = 'INSERT INTO voiture (voitNom, voitPrix, tyVoiID, voitImage, voitLien_achat, motorID, utilID)
+        VALUES (:voitNom, :voitPrix, :tyVoiID, :voitImage, :voitLien_achat, :motorID, :utilID)';
         $addCar = $pdo->prepare($query);
         $addCar->execute([
-            'voitNom' => $_POST["name_car"],
-            'voitPrix' => $_POST["le_prix"],
-            'tyVoiID' => $_POST["type_voiture"],
-            'voitImage' => $_POST["image"],
-            'voitLien_achat' => $_POST["Lien_Achat"],
-            'utilID' => $_SESSION["user"]->utilID
+        'voitNom' => $_POST["name_car"],
+        'voitPrix' => $_POST["le_prix"],
+        'tyVoiID' => $_POST["type_voiture"],
+        'motorID' => $_POST['type_moto'],
+        'voitImage' => $_POST["image"],
+        'voitLien_achat' => $_POST["Lien_Achat"],
+        'utilID' => $_SESSION["user"]->utilID
         ]);
 
     } catch (PDOException $e) {
@@ -101,20 +102,6 @@ function createCar($pdo)
     }
 }
 
-function ajouterOptionCars ($pdo,$tyVoiID,$tyVoi){
-    try {
-        $query = 'insert into type_voiture( tyVoiID , tyVoi ) values(:tyVoiID , :tyVoi)';
-        $deleteAllFromUser = $pdo->prepare($query);
-        $deleteAllFromUser->execute([
-            'tyVoiID' => $tyVoiID,
-            'tyVoi' => $tyVoi
-        ]);
-    }
-        catch (PDOException $e) {
-        $message = $e->getMessage();
-        die($message);
-    }
-}
 
 
     function selectOneCar($pdo)
@@ -123,7 +110,7 @@ function ajouterOptionCars ($pdo,$tyVoiID,$tyVoi){
             $query = 'select * from voiture where utilID = :utilID';
             $selectCar = $pdo->prepare($query);
             $selectCar->execute([
-                'voitID' => $_GET["voitID"]
+                'voitID' => $_GET["carId"]
             ]);
             $car = $selectCar->fetch(); 
             return $car;
@@ -154,16 +141,18 @@ function ajouterOptionCars ($pdo,$tyVoiID,$tyVoi){
 function updateCar($pdo)
 {
     try {
-        $query = 'UPDATE voiture SET voitNom = :voitNom, voitPrix = :voitPrix, voitID = :voitID,
+        $query = 'UPDATE voiture SET voitNom = :voitNom,motorID = :motorID, voitPrix = :voitPrix, voitID = :voitID,
                  voitImage = :voitImage, voitLien_achat = :voitLien_achat WHERE voitID = :voitID';
-        $updateSchoolFromId = $pdo->prepare($query);
-        $updateSchoolFromId->execute([
+        $updateCar = $pdo->prepare($query);
+        $updateCar->execute([
             'voitNom' => $_POST['name_car'],
             'voitPrix' => $_POST["le_prix"],
             'tyVoiID' => $_POST["type_voiture"],
+            'motorID' => $_POST['type_moto'],
             'voitImage' => $_POST["image"],
             'voitLien_achat' => $_POST["Lien_Achat"],
-            'utilID' => $_GET["utilID"] 
+            'utilID' => $_GET["utilID"] ,
+
         ]);
     } catch (PDOException $e) {
         $message = $e->getMessage();
@@ -186,19 +175,21 @@ function deleteOptionsCar($dbh)
     }
 }
 
+
 function deleteOneCar($pdo)
 {
     try {
         $query = 'DELETE FROM voiture WHERE voitID = :voitID';
         $deleteCarStatement = $pdo->prepare($query);
         $deleteCarStatement->execute([
-            'voitID' => $_GET["voitID"]
+            'voitID' => $_GET["carId"]
         ]);
     } catch (PDOException $e) {
         $message = $e->getMessage();
         die($message);
     }
 }
+
 
 
 

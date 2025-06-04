@@ -13,7 +13,7 @@
     <div class="flexible flex-wrap justify-content-space-around">
         <?php foreach ($car as $carV) : ?>
             <div class="border card">
-                <h2 class="center"><?= $carV->$voitNom  ?></h2>
+                <h2 class="center"><?= $carV->voitNom  ?></h2>
                 <div>
                     <div>
                         <img src="<?= $carV->voitImage ?>" alt="photo de voituer">
@@ -22,8 +22,9 @@
                         <p><span>Prix <?= $carV->voitPrix  ?> - </span> <span><a href="<?= $carV->voitLien_achat  ?>" target="_blank" rel="noopener noreferrer">Lien achat</a> </span></p>
                         <a href="voitCar.php" class="btn"> Voir la voiture </a>
                         <?php if ($uri === "/myCars") : ?>
-                        <p><a href="deleteCar?VoitID=<?= $voiture->VoitID ?>">Supprimer la voiture</a></p>
-                        <p><a href="updateCar?VoitID=<?= $voiture->VoitID ?>">Modifier la voiture</a></p>
+                        <p><a href="deleteCar?carId=<?= $carV->voitID ?>">Supprimer la voiture</a></p>
+                        <p><a href="updateCar?carId=<?= $carV->voitID ?>">Modifier la voiture</a></p>
+
                         <?php endif ?>
                     </div>
                 </div>
